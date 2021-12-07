@@ -1,0 +1,30 @@
+{
+  "name": "testcafe-course",
+  "version": "1.0.0",
+  "description": "Automated testing with Testcafe",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JD1927/testcafe-course.git"
+  },
+  "keywords": [
+    "TestCafe",
+    "Testing",
+    "Automation"
+  ],
+  "author": "Juan David Aguirre Córdoba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JD1927/testcafe-course/issues"
+  },
+  "homepage": "https://github.com/JD1927/testcafe-course#readme",
+  "dependencies": {
+    "testcafe": "^1.17.1"
+  },
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
+}
