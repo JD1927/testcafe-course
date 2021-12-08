@@ -26,6 +26,7 @@ test('My first testcafe test', async t => {
 	// Act
 	// await t.setTestSpeed(1); // Debug purposes
 	await t.typeText('#developer-name', name);
+	// await t.wait(3000); // Debug purposes
 	await t.click('#submit-button');
 	// Assert
 	await t.expect(Selector('#article-header').innerText).contains(name);
