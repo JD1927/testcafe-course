@@ -19,6 +19,12 @@ fixture`Getting started with TestCafe`
 		// Runs after each test
 	});
 
+// await t.setTestSpeed(1); // Debug purposes - Test speed
+// await t.wait(3000); // Debug purposes - Pause tests
+// await t.takeScreenshot({ path: './tests/test.png' }) // Not recomendable
+// await t.takeScreenshot({ fullPage: true }); // For the full page
+// await t.takeElementScreenshot(submitButton); // For a particular element
+
 test('My first testcafe test', async t => {
 	// Arrange
 	const name = 'Juan';
@@ -27,9 +33,8 @@ test('My first testcafe test', async t => {
 	const articleHeaderText = Selector('#article-header').innerText;
 
 	// Act
-	// await t.setTestSpeed(1); // Debug purposes
+
 	await t.typeText(developerNameInput, name);
-	// await t.wait(3000); // Debug purposes
 	await t.click(submitButton);
 	// Assert
 	await t.expect(articleHeaderText).contains(name);
