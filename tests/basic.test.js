@@ -22,12 +22,15 @@ fixture`Getting started with TestCafe`
 test('My first testcafe test', async t => {
 	// Arrange
 	const name = 'Juan';
+	const developerNameInput = Selector('#developer-name');
+	const submitButton = Selector('#submit-button');
+	const articleHeaderText = Selector('#article-header').innerText;
 
 	// Act
 	// await t.setTestSpeed(1); // Debug purposes
-	await t.typeText('#developer-name', name);
+	await t.typeText(developerNameInput, name);
 	// await t.wait(3000); // Debug purposes
-	await t.click('#submit-button');
+	await t.click(submitButton);
 	// Assert
-	await t.expect(Selector('#article-header').innerText).contains(name);
+	await t.expect(articleHeaderText).contains(name);
 });
