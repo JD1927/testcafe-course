@@ -25,6 +25,38 @@ fixture`Getting started with TestCafe`
 // await t.takeScreenshot({ path: './tests/test.png' }) // Not recomendable
 // await t.takeScreenshot({ fullPage: true }); // For the full page
 // await t.takeElementScreenshot(submitButton); // For a particular element
+// test.only // Just to run the specified tests
+// test.skip // Just to skip the the specified tests
+
+test('My first testcafe test', async t => {
+	// Arrange
+	const name = 'Juan';
+	const developerNameInput = Selector('#developer-name');
+	const submitButton = Selector('#submit-button');
+	const articleHeaderText = Selector('#article-header').innerText;
+
+	// Act
+
+	await t.typeText(developerNameInput, name);
+	await t.click(submitButton);
+	// Assert
+	await t.expect(articleHeaderText).contains(name);
+}).timeouts({ pageLoadTimeout: 0 });
+
+test('My first testcafe test', async t => {
+	// Arrange
+	const name = 'Juan';
+	const developerNameInput = Selector('#developer-name');
+	const submitButton = Selector('#submit-button');
+	const articleHeaderText = Selector('#article-header').innerText;
+
+	// Act
+
+	await t.typeText(developerNameInput, name);
+	await t.click(submitButton);
+	// Assert
+	await t.expect(articleHeaderText).contains(name);
+}).timeouts({ pageLoadTimeout: 0 });
 
 test('My first testcafe test', async t => {
 	// Arrange
