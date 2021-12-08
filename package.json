@@ -4,7 +4,11 @@
   "description": "Automated testing with Testcafe",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome ./tests"
+    "test:chrome": "testcafe chrome ./tests",
+    "test:chrome:headless": "testcafe chrome:headless ./tests",
+    "test:chrome:mobile": "testcafe chrome:emulation:device=iphone X ./tests",
+    "test:safari": "testcafe safari ./tests",
+    "test:firefox": "testcafe firefox ./tests"
   },
   "repository": {
     "type": "git",
