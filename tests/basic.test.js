@@ -10,6 +10,7 @@ fixture`Getting started with TestCafe`
 	.beforeEach(async t => {
 		// Runs before each test
 		await t.setTestSpeed(1); // Debug purposes
+		// await t.setPageLoadTimeout(0); // Deprecated
 	})
 	.after(async t => {
 		// Cleaning test data
@@ -38,4 +39,4 @@ test('My first testcafe test', async t => {
 	await t.click(submitButton);
 	// Assert
 	await t.expect(articleHeaderText).contains(name);
-});
+}).timeouts({ pageLoadTimeout: 0 });
