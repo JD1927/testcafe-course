@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:chrome": "testcafe chrome ./tests -s takeOnFails=true",
+    "test:chrome:cache": "testcafe chrome ./tests -s takeOnFails=true --disable-page-caching",
     "test:chrome:headless": "testcafe chrome:headless ./tests -s takeOnFails=true",
     "test:chrome:mobile": "testcafe chrome:emulation:device=iphone X ./tests -s takeOnFails=true",
     "test:safari": "testcafe safari ./tests -s takeOnFails=true",
