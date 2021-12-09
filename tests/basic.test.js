@@ -39,36 +39,20 @@ test('My first testcafe test', async t => {
 
 	await t.typeText(developerNameInput, name);
 	await t.click(submitButton);
-	// Assert
-	await t.expect(articleHeaderText).contains(name);
-}).timeouts({ pageLoadTimeout: 0 });
 
-test('My first testcafe test', async t => {
-	// Arrange
-	const name = 'Juan';
-	const developerNameInput = Selector('#developer-name');
-	const submitButton = Selector('#submit-button');
-	const articleHeaderText = Selector('#article-header').innerText;
+	// Click
+	await t.click('selector', { options });
+	// Double
+	await t.doubleClick('selector', { options });
+	// Right
+	await t.rightClick('selector', { options });
+	// Drag Element - X and Y
+	await t.drag('selector', 200, 0, { options });
+	// Hover
+	await t.hover('selector', { options });
+	// Hover
+	await t.selectText('selector', { options });
 
-	// Act
-
-	await t.typeText(developerNameInput, name);
-	await t.click(submitButton);
-	// Assert
-	await t.expect(articleHeaderText).contains(name);
-}).timeouts({ pageLoadTimeout: 0 });
-
-test('My first testcafe test', async t => {
-	// Arrange
-	const name = 'Juan';
-	const developerNameInput = Selector('#developer-name');
-	const submitButton = Selector('#submit-button');
-	const articleHeaderText = Selector('#article-header').innerText;
-
-	// Act
-
-	await t.typeText(developerNameInput, name);
-	await t.click(submitButton);
 	// Assert
 	await t.expect(articleHeaderText).contains(name);
 }).timeouts({ pageLoadTimeout: 0 });
