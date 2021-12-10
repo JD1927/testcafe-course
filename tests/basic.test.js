@@ -52,6 +52,17 @@ test('My first testcafe test', async t => {
 	await t.hover('selector', { options });
 	// Hover
 	await t.selectText('selector', { options });
+	// Type text
+	await t.typeText('selector', 'text', { options });
+	// Press key on the keyboard
+	await t.pressKey('key', { options });
+	// Navigate
+	await t.navigateTo('url');
+	// Navigate
+	await t.takeScreenshot('path');
+	await t.takeElementScreenshot('path', { options });
+	// Resize window
+	await t.resizeWindow(800, 600);
 
 	// Assert
 	await t.expect(articleHeaderText).contains(name);
