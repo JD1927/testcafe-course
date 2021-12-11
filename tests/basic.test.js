@@ -66,4 +66,26 @@ test('My first testcafe test', async t => {
 
 	// Assert
 	await t.expect(articleHeaderText).contains(name);
+
+	// Deep Equal
+	await t.expect('foo').eql('foo', 'message', { options });
+	// Not Deep Equal
+	await t.expect('foo').notEql('foo', 'message', { options });
+	// OK
+	await t.expect(true).ok(); // Boolean values
+	// Not OK
+	await t.expect(false).notOk(); // Boolean values
+	// Contains
+	await t.expect('value').contains('ue');
+	// Contains
+	await t.expect('value').notContains('foo');
+	// Greater or less than
+	await t.expect(11).gt(10);
+	await t.expect(11).gte(10);
+	await t.expect(10).lt(10);
+	await t.expect(9).lte(10);
+	// Within
+	await t.expect(9).within(1, 10);
+	// Not within
+	await t.expect(11).notWithin(1, 10);
 }).timeouts({ pageLoadTimeout: 0 });
