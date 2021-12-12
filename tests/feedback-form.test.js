@@ -1,7 +1,7 @@
 import { Selector } from 'testcafe';
 
 // prettier-ignore
-fixture`Send forgotten password test`
+fixture`Feedback form test`
   .page`http://zero.webappsecurity.com/index.html`;
 
 test('User can provide feedback by filling up a form', async t => {
