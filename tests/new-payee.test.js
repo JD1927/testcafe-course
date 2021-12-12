@@ -1,21 +1,12 @@
 import { Selector } from 'testcafe';
+import { login } from '../helper';
 
 // prettier-ignore
 fixture`New payee test`
   .page(`http://zero.webappsecurity.com/index.html`);
 
 test.before(async t => {
-	// Arrange
-	const signInButton = Selector('#signin_button');
-	const usernameInput = Selector('#user_login');
-	const passwordInput = Selector('#user_password');
-	const submitButton = Selector('.btn.btn-primary');
-
-	// Act
-	await t.click(signInButton);
-	await t.typeText(usernameInput, 'username', { paste: true });
-	await t.typeText(passwordInput, 'password', { paste: true });
-	await t.click(submitButton);
+	await login('username', 'password');
 })('User can add new payee to the list', async t => {
 	// Arrange
 	const payeeName = 'My new payee name';
