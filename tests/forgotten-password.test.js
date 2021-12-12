@@ -11,7 +11,6 @@ test('User can request new password to be send to his email', async t => {
 		'Forgot your password ?'
 	);
 	const emailInput = Selector('#user_email');
-	const submitButton = Selector('input[name="submit"]');
 	const message = Selector('div').innerText;
 	const emailRandom = 'email@random.com';
 	// Act
