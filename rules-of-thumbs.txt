@@ -83,3 +83,13 @@ await t.expect(9).within(1, 10);
 await t.expect(11).notWithin(1, 10);
 
 http://zero.webappsecurity.com/index.html
+
+
+// XPATH to CSS
+"xpath-to-css": "^1.0.5"
+
+import xPathToCss from 'xpath-to-css';
+...
+const xPath = `//div[1]/div[1]/div/div/div/ul/li[1]/form/input`;
+const css = xPathToCss(xPath);
+console.log(css);
