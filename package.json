@@ -11,7 +11,8 @@
     "test:chrome:cache": "testcafe chrome ./tests -s takeOnFails=true --disable-page-caching",
     "test:chrome:mobile": "testcafe chrome:emulation:device=iphone X ./tests -s takeOnFails=true",
     "test:safari": "testcafe safari ./tests -s takeOnFails=true",
-    "test:firefox": "testcafe firefox ./tests -s takeOnFails=true"
+    "test:firefox": "testcafe firefox ./tests -s takeOnFails=true",
+    "test:multiple": "testcafe chrome,firefox ./tests -s takeOnFails=true"
   },
   "repository": {
     "type": "git",
