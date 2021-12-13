@@ -1,4 +1,7 @@
 import { Selector } from 'testcafe';
+import Navbar from './../page-objects/components/Navbar';
+
+const navbar = new Navbar();
 
 // prettier-ignore
 fixture`Send forgotten password test`
@@ -6,7 +9,6 @@ fixture`Send forgotten password test`
 
 test('User can request new password to be send to his email', async t => {
 	// Arrange
-	const signInButton = Selector('#signin_button');
 	const linkToForgottenPassword = Selector('a').withExactText(
 		'Forgot your password ?'
 	);
@@ -14,7 +16,7 @@ test('User can request new password to be send to his email', async t => {
 	const message = Selector('div').innerText;
 	const emailRandom = 'email@random.com';
 	// Act
-	await t.click(signInButton);
+	await t.click(navbar.signInButton);
 	await t.click(linkToForgottenPassword);
 	await t.typeText(emailInput, emailRandom, { paste: true });
 	await t.pressKey('enter');

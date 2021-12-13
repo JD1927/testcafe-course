@@ -1,5 +1,8 @@
 import { Selector } from 'testcafe';
 import { login } from '../helper';
+import Navbar from './../page-objects/components/Navbar';
+
+const navbar = new Navbar();
 
 // prettier-ignore
 fixture`Login test`
@@ -24,7 +27,6 @@ test('User can login into application', async t => {
 	const logoutButton = Selector('#logout_link');
 	await t.click(logoutButton);
 
-	const signInButton = Selector('#signin_button');
 	await t.expect(logoutButton.exists).notOk();
-	await t.expect(signInButton.exists).ok();
+	await t.expect(navbar.signInButton.exists).ok();
 });
