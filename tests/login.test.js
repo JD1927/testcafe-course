@@ -1,32 +1,39 @@
 import { Selector } from 'testcafe';
-import { login } from '../helper';
 import Navbar from './../page-objects/components/Navbar';
+import LoginPage from '../page-objects/pages/LoginPage';
 
 const navbar = new Navbar();
+const loginPage = new LoginPage();
 
 // prettier-ignore
 fixture`Login test`
   .page`http://zero.webappsecurity.com/index.html`;
 
 test('User cannot login with invalid credentials', async t => {
-	await login('invalid username', 'invalid password');
-
-	const errorMessage = Selector('.alert.alert-error').innerText;
-	await t.expect(errorMessage).contains('Login and/or password are wrong.');
+	// Arrange
+	const expectedErrorMessage = 'Login and/or password are wrong.';
+	// Act
+	await t.click(navbar.signInButton);
+	await loginPage.loginToApp('invalid username', 'invalid password');
+	// Assert
+	await t
+		.expect(loginPage.loginErrorMessage.innerText)
+		.contains(expectedErrorMessage);
 });
 
 test('User can login into application', async t => {
-	await login('username', 'password');
-
+	// Arrange
 	const accountSummaryTab = Selector('#account_summary_tab');
-	await t.expect(accountSummaryTab.exists).ok();
-
 	const userDropDown = Selector('.icon-user');
-	await t.click(userDropDown);
-
 	const logoutButton = Selector('#logout_link');
-	await t.click(logoutButton);
 
+	// Act
+	await t.click(navbar.signInButton);
+	await loginPage.loginToApp('username', 'password');
+	await t.expect(accountSummaryTab.exists).ok();
+	await t.click(userDropDown);
+	await t.click(logoutButton);
+	// Assert
 	await t.expect(logoutButton.exists).notOk();
 	await t.expect(navbar.signInButton.exists).ok();
 });

@@ -1,4 +1,3 @@
-import { Selector } from 'testcafe';
 import Navbar from '../page-objects/components/Navbar';
 import SearchResultsPage from '../page-objects/pages/SearchResultsPage';
 
