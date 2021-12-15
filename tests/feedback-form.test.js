@@ -35,6 +35,7 @@ test('User can provide feedback by filling up a form', async t => {
 		paste: true,
 		replace: true,
 	});
+	await feedbackFormPage.waitFor(4000);
 	await t.click(feedbackFormPage.submitButton);
 
 	// Assert
