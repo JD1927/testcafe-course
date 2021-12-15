@@ -1,7 +1,9 @@
 import { Selector } from 'testcafe';
-import Navbar from './../page-objects/components/Navbar';
+import Navbar from '../page-objects/components/Navbar';
+import SearchResultsPage from '../page-objects/pages/SearchResultsPage';
 
 const navbar = new Navbar();
+const searchResultsPage = new SearchResultsPage();
 
 // prettier-ignore
 fixture`Search box test`
@@ -10,15 +12,18 @@ fixture`Search box test`
 test('User can search terms/content in the search box', async t => {
 	// Arrange
 	const search = 'online';
+	const expectedTitle = 'Search Results:';
 	const firstResultText = 'Zero - Free Access to Online Banking';
-	const searchResults = Selector('h2').innerText;
-	const firstItemResult = Selector('.top_offset li').withText(firstResultText);
 
 	// Act
 	await navbar.search(search);
 
 	// Assert
-	await t.expect(searchResults).contains('Search Results:');
-	await t.expect(firstItemResult.exists).ok();
+	await t
+		.expect(searchResultsPage.resultsTitle.innerText)
+		.contains(expectedTitle);
 	await t.expect(navbar.searchInput.exists).ok();
+	await t
+		.expect(searchResultsPage.linkText.innerText)
+		.contains(firstResultText);
 });
