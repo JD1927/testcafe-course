@@ -7,8 +7,7 @@ const loginPage = new LoginPage();
 
 // prettier-ignore
 fixture`Login test`
-  .page`http://zero.webappsecurity.com/index.html`
-	.only;
+  .page`http://zero.webappsecurity.com/index.html`;
 
 test('User cannot login with invalid credentials', async t => {
 	// Arrange
