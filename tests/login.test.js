@@ -7,7 +7,8 @@ const loginPage = new LoginPage();
 
 // prettier-ignore
 fixture`Login test`
-  .page`http://zero.webappsecurity.com/index.html`;
+  .page`http://zero.webappsecurity.com/index.html`
+	.only;
 
 test('User cannot login with invalid credentials', async t => {
 	// Arrange
@@ -17,23 +18,23 @@ test('User cannot login with invalid credentials', async t => {
 	await loginPage.loginToApp('invalid username', 'invalid password');
 	// Assert
 	await t
-		.expect(loginPage.loginErrorMessage.innerText)
+		.expect(loginPage.errorMessage.innerText)
 		.contains(expectedErrorMessage);
 });
 
 test('User can login into application', async t => {
 	// Arrange
 	const accountSummaryTab = Selector('#account_summary_tab');
-	const userDropDown = Selector('.icon-user');
-	const logoutButton = Selector('#logout_link');
 
 	// Act
 	await t.click(navbar.signInButton);
 	await loginPage.loginToApp('username', 'password');
 	await t.expect(accountSummaryTab.exists).ok();
-	await t.click(userDropDown);
-	await t.click(logoutButton);
+	await t.expect(loginPage.loginForm.exists).notOk();
+
+	await t.click(navbar.userDropDown);
+	await t.click(navbar.logoutButton);
 	// Assert
-	await t.expect(logoutButton.exists).notOk();
+	await t.expect(navbar.logoutButton.exists).notOk();
 	await t.expect(navbar.signInButton.exists).ok();
 });
