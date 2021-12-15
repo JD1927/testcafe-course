@@ -9,8 +9,7 @@ const forgottenPasswordPage = new ForgottenPasswordPage();
 
 // prettier-ignore
 fixture`Send forgotten password test`
-  .page`http://zero.webappsecurity.com/index.html`
-	.only;
+  .page`http://zero.webappsecurity.com/index.html`;
 
 test('User can request new password to be send to his email', async t => {
 	// Arrange

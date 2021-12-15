@@ -1,4 +1,7 @@
 import { Selector } from 'testcafe';
+import FeedbackFormPage from '../page-objects/pages/FeedbackFormPage';
+
+const feedbackFormPage = new FeedbackFormPage();
 
 // prettier-ignore
 fixture`Feedback form test`
@@ -7,26 +10,35 @@ fixture`Feedback form test`
 test('User can provide feedback by filling up a form', async t => {
 	// Arrange
 	const linkToFeedback = Selector('#feedback');
-	const nameInput = Selector('#name');
-	const emailInput = Selector('#email');
-	const subjectInput = Selector('#subject');
-	const commentInput = Selector('#comment');
-	const submitButton = Selector('input[name="submit"]');
-	const thankyouPage = Selector('div.offset3.span6').innerText;
 
 	const name = 'John Doe';
 	const emailRandom = 'email@random.com';
 	const subjectRandom = 'Subject random';
 	const commentRandom = 'Comment random';
+	const expectedMessage = `Thank you for your comments, ${name}`;
 
 	// Act
 	await t.click(linkToFeedback);
-	await t.typeText(nameInput, name, { paste: true });
-	await t.typeText(emailInput, emailRandom, { paste: true });
-	await t.typeText(subjectInput, subjectRandom, { paste: true });
-	await t.typeText(commentInput, commentRandom, { paste: true });
-	await t.click(submitButton);
+	await t.typeText(feedbackFormPage.nameInput, name, {
+		paste: true,
+		replace: true,
+	});
+	await t.typeText(feedbackFormPage.emailInput, emailRandom, {
+		paste: true,
+		replace: true,
+	});
+	await t.typeText(feedbackFormPage.subjectInput, subjectRandom, {
+		paste: true,
+		replace: true,
+	});
+	await t.typeText(feedbackFormPage.commentInput, commentRandom, {
+		paste: true,
+		replace: true,
+	});
+	await t.click(feedbackFormPage.submitButton);
 
 	// Assert
-	await t.expect(thankyouPage).contains(`Thank you for your comments, ${name}`);
+	await t
+		.expect(feedbackFormPage.thankyouPage.innerText)
+		.contains(expectedMessage);
 });
