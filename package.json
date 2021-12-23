@@ -12,7 +12,8 @@
     "test:chrome:mobile": "testcafe chrome:emulation:device=iphone X ./tests -s takeOnFails=true",
     "test:safari": "testcafe safari ./tests -s takeOnFails=true",
     "test:firefox": "testcafe firefox ./tests -s takeOnFails=true",
-    "test:multiple": "testcafe chrome,firefox ./tests -s takeOnFails=true"
+    "test:multiple": "testcafe chrome,firefox ./tests -s takeOnFails=true",
+    "start:jenkins-server": "java -jar jenkins.war -httpPort=8080 --enable-future-java"
   },
   "repository": {
     "type": "git",
