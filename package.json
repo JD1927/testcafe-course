@@ -4,7 +4,7 @@
   "description": "Automated testing with Testcafe",
   "main": "index.js",
   "scripts": {
-    "test:chrome": "testcafe chrome ./tests -s takeOnFails=true",
+    "test:chrome": "testcafe chrome ./tests -s takeOnFails=true --reporter json",
     "test:chrome:multi": "testcafe -c 3 chrome ./tests -s takeOnFails=true",
     "test:chrome:hl": "testcafe chrome:headless ./tests -s takeOnFails=true",
     "test:chrome:hl:multi": "testcafe -c 3 chrome:headless ./tests -s takeOnFails=true",
@@ -31,7 +31,8 @@
   },
   "homepage": "https://github.com/JD1927/testcafe-course#readme",
   "dependencies": {
-    "testcafe": "^1.17.1"
+    "testcafe": "^1.17.1",
+    "testcafe-reporter-json": "^2.2.0"
   },
   "devDependencies": {
     "prettier": "2.5.1"
